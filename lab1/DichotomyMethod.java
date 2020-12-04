@@ -6,7 +6,6 @@ public class DichotomyMethod {
         float delta = eps / 3;
         float x1, x2, middle, x = 0;
         int iter = 0;
-        //int iterTheor = (int) ((int) Math.log10((b - a) / eps) / Math.log(2));
         while (abs(a-b) > eps) {
             iter++;
             System.out.println(iter + "th interval: " + a + " , " + b);
@@ -21,7 +20,6 @@ public class DichotomyMethod {
         }
         System.out.println("x = " + x + " f(x) = " + f.execute(x));
         System.out.println("Iterations made: " + iter);
-        //System.out.println("Iterations made in theory: " + iterTheor);
     }
 
     public static void main(String[] args) {
