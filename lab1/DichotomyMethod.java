@@ -9,7 +9,7 @@ public class DichotomyMethod {
         //int iterTheor = (int) ((int) Math.log10((b - a) / eps) / Math.log(2));
         while (abs(a-b) > eps) {
             iter++;
-            System.out.println(iter + " interval: " + a + " , " + b);
+            System.out.println(iter + "th interval: " + a + " , " + b);
             middle = (a+b)/2;
             x = middle;
             x1 = middle - delta;
@@ -31,14 +31,19 @@ public class DichotomyMethod {
         Function func4 = Functions.action(4);
         Function func5 = Functions.action(5);
 
+        System.out.println("First function results:");
         dichotomyMethod(func1, -0.5f, 0.5f, 0.1f);
         System.out.println();
+        System.out.println("Second function results:");
         dichotomyMethod(func2, 6f, 9.9f, 0.1f);
         System.out.println();
+        System.out.println("Third function results:");
         dichotomyMethod(func3, 0f, (float) (2 * Math.PI), 0.1f);
         System.out.println();
+        System.out.println("Fourth function results:");
         dichotomyMethod(func4, 0f, 1f, 0.1f);
         System.out.println();
+        System.out.println("Fifth function results:");
         dichotomyMethod(func5, 0.5f, 2.5f, 0.1f);
     }
 }
