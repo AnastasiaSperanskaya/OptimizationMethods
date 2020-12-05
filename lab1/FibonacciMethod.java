@@ -24,7 +24,7 @@ public class FibonacciMethod {
         n-=2;
         System.out.println("Iterations number: " + (n + 1));
         System.out.println("Fibonacci number is: " + y);
-        float xi, x1 = a + fibonacci(n) / fibonacci(n + 2) * (b - a), x2 = a + fibonacci(n + 1) / fibonacci(n + 2) * (b - a);
+        float x1 = a + fibonacci(n) / fibonacci(n + 2) * (b - a), x2 = a + fibonacci(n + 1) / fibonacci(n + 2) * (b - a);
         System.out.println("Calculated points are: " + x1 + " , " + x2);
         System.out.println("Calculated function values are: " + f.execute(x1) + " , " + f.execute(x2));
         for(int i = 0; i < n + 1; i++) {
