@@ -4,7 +4,6 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 public class GoldenSectionMethod {
-
     public static void goldenSectionMethod(Function f, float a, float b, float eps) {
 
         NumberFormat nf2 = NumberFormat.getInstance(new Locale("sk", "SK"));
@@ -35,6 +34,31 @@ public class GoldenSectionMethod {
         System.out.println("Iterations made: " + iter);
     }
 
+    public static void goldenSectionMethodPart2(Function f, float a, float b, float eps) {
+
+        NumberFormat nf2 = NumberFormat.getInstance(new Locale("sk", "SK"));
+        nf2.setMaximumFractionDigits(10);
+
+        float PHI = (float) ((Math.sqrt(5) + 1) / 2);
+        float x1, x2, x;
+        int iter = 0;
+        while (true){
+            iter++;
+            x1 = b - (b - a) / PHI;
+            x2 = a + (b - a) / PHI;
+            double f1 = f.execute(x1);
+            double f2 = f.execute(x2);
+            if (f1 >= f2)
+                a = x1;
+            else
+                b = x2;
+            if (Math.abs(b - a) < eps)
+                break;
+        }
+        x = (b + a) / 2;
+        System.out.println("Function called: " + (iter+1) + " Accuracy: " + nf2.format(eps));
+    }
+
     public static void main(String[] args) {
         Function func1 = Functions.action(1);
         Function func2 = Functions.action(2);
@@ -42,20 +66,32 @@ public class GoldenSectionMethod {
         Function func4 = Functions.action(4);
         Function func5 = Functions.action(5);
 
-        System.out.println("First function results:");
-        goldenSectionMethod(func1, -0.5f, 0.5f, 0.1f);
-        System.out.println();
-        System.out.println("Second function results:");
-        goldenSectionMethod(func2, 6f, 9.9f, 0.1f);
-        System.out.println();
-        System.out.println("Third function results:");
-        goldenSectionMethod(func3, 0f, (float) (2 * Math.PI), 0.1f);
-        System.out.println();
-        System.out.println("Fourth function results:");
-        goldenSectionMethod(func4, 0f, 1f, 0.1f);
-        System.out.println();
-        System.out.println("Fifth function results:");
-        goldenSectionMethod(func5, 0.5f, 2.5f, 0.1f);
+        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.1f);
+        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.05f);
+        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.03f);
+        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.01f);
+        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.001f);
+        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.0005f);
+        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.00005f);
+        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.000001f);
+        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.0000001f);
+        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.00000001f);
+        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.000000001f);
+        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.0000000001f);
+//        System.out.println("First function results:");
+//        goldenSectionMethod(func1, -0.5f, 0.5f, 0.1f);
+//        System.out.println();
+//        System.out.println("Second function results:");
+//        goldenSectionMethod(func2, 6f, 9.9f, 0.1f);
+//        System.out.println();
+//        System.out.println("Third function results:");
+//        goldenSectionMethod(func3, 0f, (float) (2 * Math.PI), 0.1f);
+//        System.out.println();
+//        System.out.println("Fourth function results:");
+//        goldenSectionMethod(func4, 0f, 1f, 0.1f);
+//        System.out.println();
+//        System.out.println("Fifth function results:");
+//        goldenSectionMethod(func5, 0.5f, 2.5f, 0.1f);
     }
 
 }
