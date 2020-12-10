@@ -12,6 +12,8 @@ public class ParabolaMethod {
         NumberFormat nf2 = NumberFormat.getInstance(new Locale("sk", "SK"));
         nf2.setMaximumFractionDigits(4);
         boolean flag = true;
+        double initial_a = a, initial_b = b;
+
         int iter = 0;
         double f1 = f.execute(a);
         double f3 = f.execute(b);
@@ -23,14 +25,15 @@ public class ParabolaMethod {
         {
             iter++;
             System.out.println(iter + "th interval: " + nf2.format(a) + " , " + nf2.format(b));
-//            double x2 = (a + b) / 5;
-//            double f2 = f.execute(x2);
+
             double u = x2 - ((f2 - f3) * Math.pow(x2 - a, 2) - (f2 - f1) * Math.pow(x2 - b, 2)) /
                     (2 * ((x2 - a) * (f2 - f3) - (x2 - b) * (f2 - f1)));
             double fu = f.execute(u);
 
-            System.out.println("x2: " + nf2.format(x2));
-            System.out.println("u: " + nf2.format(u));
+            System.out.println("Calculated point: " + nf2.format(u));
+            System.out.println("Calculated function value: " + nf2.format(fu));
+//            System.out.println("x2: " + nf2.format(x2));
+//            System.out.println("u: " + nf2.format(u));
 
             if (u > a && u < b) {
                 if (fu < f2) {
