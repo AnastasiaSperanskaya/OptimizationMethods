@@ -6,18 +6,21 @@ public class DichotomyMethod {
         float delta = eps / 3;
         float x1, x2, middle, x = 0;
         int iter = 0;
-        while (abs(a-b) > eps) {
+        while (b - a > eps) {
             iter++;
             System.out.println(iter + "th interval: " + a + " , " + b);
             middle = (a+b)/2;
             x = middle;
             x1 = middle - delta;
             x2 = middle + delta;
+            //System.out.println("Calculated middle point: " + x);
+            //System.out.println("Calculated function value: " + f.execute(x));
             System.out.println("Calculated points are: " + x1 + " , " + x2);
             System.out.println("Calculated function values are: " + f.execute(x1) + " , " + f.execute(x2));
             if (f.execute(x1) < f.execute(x2)) b = x2;
             else a = x1;
         }
+        System.out.println("next interval could be: [" + a + " ; " + b + "]");
         System.out.println("x = " + x + " f(x) = " + f.execute(x));
         System.out.println("Iterations made: " + iter);
     }

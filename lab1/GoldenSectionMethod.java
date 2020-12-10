@@ -1,21 +1,28 @@
 package lab1;
 import java.lang.Math;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class GoldenSectionMethod {
 
     public static void goldenSectionMethod(Function f, float a, float b, float eps) {
 
-        float PHI = (float) ((3 - Math.sqrt(5)) / 2);
+        NumberFormat nf2 = NumberFormat.getInstance(new Locale("sk", "SK"));
+        nf2.setMaximumFractionDigits(4);
+
+        float PHI = (float) ((Math.sqrt(5) + 1) / 2);
         float x1, x2, x;
         int iter = 0;
         while (true){
             iter++;
-            System.out.println(iter + "th interval: " + a + " , " + b);
-            x2 = b - (b - a) * PHI;
-            x1 = a + (b - a) * PHI;
-            System.out.println("Calculated points are: " + x1 + " , " + x2);
-            System.out.println("Calculated function values are: " + f.execute(x1) + " , " + f.execute(x2));
-            if (f.execute(x1) >= f.execute(x2))
+            System.out.println(iter + "th interval: " + nf2.format(a) + " , " + nf2.format(b));
+            x1 = b - (b - a) / PHI;
+            x2 = a + (b - a) / PHI;
+            double f1 = f.execute(x1);
+            double f2 = f.execute(x2);
+            System.out.println("Calculated points are: " + nf2.format(x1) + " , " + nf2.format(x2));
+            System.out.println("Calculated function values are: " + nf2.format(f1) + " , " + nf2.format(f2));
+            if (f1 >= f2)
                 a = x1;
             else
                 b = x2;
@@ -23,6 +30,7 @@ public class GoldenSectionMethod {
                 break;
         }
         x = (b + a) / 2;
+        System.out.println("next interval could be: [" + a + " ; " + b + "]");
         System.out.println("x = " + x + " f(x) = " + f.execute(x));
         System.out.println("Iterations made: " + iter);
     }

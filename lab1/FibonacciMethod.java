@@ -1,5 +1,8 @@
 package lab1;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class FibonacciMethod {
 
     public static float fibonacci(int n){
@@ -13,6 +16,8 @@ public class FibonacciMethod {
     }
 
     public static void fibonacciMethod(Function f, float a, float b, float eps) {
+        NumberFormat nf2 = NumberFormat.getInstance(new Locale("sk", "SK"));
+        nf2.setMaximumFractionDigits(4);
         int n = 2;
         long x = 1;
         long y = 1;
@@ -22,22 +27,27 @@ public class FibonacciMethod {
             x = y - x;
         }
         n-=2;
-        System.out.println("Iterations number: " + (n + 1));
-        System.out.println("Fibonacci number is: " + y);
+        System.out.println("Iterations number: " + n);
+        //System.out.println("Fibonacci number is: " + y);
         float x1 = a + fibonacci(n) / fibonacci(n + 2) * (b - a), x2 = a + fibonacci(n + 1) / fibonacci(n + 2) * (b - a);
-        System.out.println("Calculated points are: " + x1 + " , " + x2);
-        System.out.println("Calculated function values are: " + f.execute(x1) + " , " + f.execute(x2));
-        for(int i = 0; i < n + 1; i++) {
-            System.out.println(i+1 + "th interval: " + a + " , " + b);
-            if(f.execute(x1) < f.execute(x2)) b = x2;
+        double f2 = f.execute(x2), f1 = f.execute(x1);
+        System.out.println("1th interval: " + nf2.format(a) + " , " + nf2.format(b));
+        System.out.println("Calculated points are: " + nf2.format(x1) + " , " + nf2.format(x2));
+        System.out.println("Calculated function values are: " + nf2.format(f1) + " , " + nf2.format(f2));
+        for(int i = 2; i < n + 1; i++) {
+            if(f1 < f2) b = x2;
             else a = x1;
+            System.out.println(i + "th interval: " + nf2.format(a) + " , " + nf2.format(b));
             x1 = a + fibonacci(n - i + 1) / fibonacci(n - i + 3) * (b - a);
             x2 = a + fibonacci(n - i + 2) / fibonacci(n - i + 3) * (b - a);
-            System.out.println("Calculated points are: " + x1 + " , " + x2);
-            System.out.println("Calculated function values are: " + f.execute(x1) + " , " + f.execute(x2));
+            f1 = f.execute(x1);
+            f2 = f.execute(x2);
+            System.out.println("Calculated points are: " + nf2.format(x1) + " , " + nf2.format(x2));
+            System.out.println("Calculated function values are: " + nf2.format(f1) + " , " + nf2.format(f2));
         }
+        System.out.println("interval with minimum: [" + a + " ; " + b + "]");
         System.out.println("x = " + x1+ " f(x) = " + f.execute(x1));
-        System.out.println("Iterations made: " + (n + 1));
+        System.out.println("Iterations made: " + n);
     }
 
     public static void main(String[] args) {
