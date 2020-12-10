@@ -11,6 +11,7 @@ public class ParabolaMethod {
     {
         NumberFormat nf2 = NumberFormat.getInstance(new Locale("sk", "SK"));
         nf2.setMaximumFractionDigits(4);
+        boolean flag = true;
         int iter = 0;
         double f1 = f.execute(a);
         double f3 = f.execute(b);
@@ -31,40 +32,47 @@ public class ParabolaMethod {
             System.out.println("x2: " + nf2.format(x2));
             System.out.println("u: " + nf2.format(u));
 
-            if(fu < f2) {
-                if(u < x2) {
-                    double tmp = x2;
-                    double ftmp = f2;
-                    x2 = u;
-                    f2 = fu;
-                    b = tmp;
-                    f3 = ftmp;
+            if (u > a && u < b) {
+                if (fu < f2) {
+                    if (u < x2) {
+                        double tmp = x2;
+                        double ftmp = f2;
+                        x2 = u;
+                        f2 = fu;
+                        b = tmp;
+                        f3 = ftmp;
+                    } else {
+                        double tmp = x2;
+                        double ftmp = f2;
+                        x2 = u;
+                        f2 = fu;
+                        a = tmp;
+                        f1 = ftmp;
+                    }
                 } else {
-                    double tmp = x2;
-                    double ftmp = f2;
-                    x2 = u;
-                    f2 = fu;
-                    a = tmp;
-                    f1 = ftmp;
+                    if (u < x2) {
+                        x2 = u;
+                        f2 = fu;
+                        a = u;
+                        f1 = fu;
+                    } else {
+                        x2 = u;
+                        f2 = fu;
+                        b = u;
+                        f3 = fu;
+                    }
                 }
             } else {
-                if(u < x2) {
-                    x2 = u;
-                    f2 = fu;
-                    a = u;
-                    f1 = fu;
-                } else {
-                    x2 = u;
-                    f2 = fu;
-                    b = u;
-                    f3 = fu;
-                }
+                System.out.println("Something went wrong :)");
+                flag = false;
+                break;
             }
         }
-
-        System.out.println("interval with minimum: [" + a + " ; " + b + "]");
-        System.out.println("x = " + (b + a) / 2 + " f(x) = " + f.execute((b + a) / 2));
-        System.out.println("Iterations made: " + iter);
+        if (flag) {
+            System.out.println("interval with minimum: [" + a + " ; " + b + "]");
+            System.out.println("x = " + (b + a) / 2 + " f(x) = " + f.execute((b + a) / 2));
+            System.out.println("Iterations made: " + iter);
+        }
     }
 
     public static void main(String[] args) {
