@@ -6,7 +6,6 @@ import java.util.Locale;
 import static java.lang.Math.abs;
 
 public class ParabolaMethod {
-
     public static void parabolaMethod(Function f, double a, double b, double eps)
     {
         NumberFormat nf2 = NumberFormat.getInstance(new Locale("sk", "SK"));
@@ -77,6 +76,64 @@ public class ParabolaMethod {
         }
     }
 
+    public static void parabolaMethodPart2(Function f, double a, double b, double eps)
+    {
+        NumberFormat nf2 = NumberFormat.getInstance(new Locale("sk", "SK"));
+        nf2.setMaximumFractionDigits(10);
+        boolean flag = true;
+        double initial_a = a, initial_b = b;
+
+        int iter = 0;
+        double f1 = f.execute(a);
+        double f3 = f.execute(b);
+        double x2 = (a + b) / 2.5;
+        double f2 = f.execute(x2);
+
+        while (b - a > eps)
+        {
+            iter++;
+            double u = x2 - ((f2 - f3) * Math.pow(x2 - a, 2) - (f2 - f1) * Math.pow(x2 - b, 2)) /
+                    (2 * ((x2 - a) * (f2 - f3) - (x2 - b) * (f2 - f1)));
+            double fu = f.execute(u);
+            if (u > a && u < b) {
+                if (fu < f2) {
+                    if (u < x2) {
+                        double tmp = x2;
+                        double ftmp = f2;
+                        x2 = u;
+                        f2 = fu;
+                        b = tmp;
+                        f3 = ftmp;
+                    } else {
+                        double tmp = x2;
+                        double ftmp = f2;
+                        x2 = u;
+                        f2 = fu;
+                        a = tmp;
+                        f1 = ftmp;
+                    }
+                } else {
+                    if (u < x2) {
+                        x2 = u;
+                        f2 = fu;
+                        a = u;
+                        f1 = fu;
+                    } else {
+                        x2 = u;
+                        f2 = fu;
+                        b = u;
+                        f3 = fu;
+                    }
+                }
+            } else {
+                System.out.println("Something went wrong :)");
+                flag = false;
+                break;
+            }
+        }
+        System.out.println("Function called: " + (iter+3) + " Accuracy: " + nf2.format(eps));
+    }
+
     public static void main(String[] args) {
         Function func1 = Functions.action(1);
         Function func2 = Functions.action(2);
@@ -84,19 +141,31 @@ public class ParabolaMethod {
         Function func4 = Functions.action(4);
         Function func5 = Functions.action(5);
 
-        System.out.println("First function results:");
-        parabolaMethod(func1, -0.5, 0.5,  0.1);
-        System.out.println();
-        System.out.println("Second function results:");
-        parabolaMethod(func2, 6,9.9, 0.1);
-        System.out.println();
-        System.out.println("Third function results:");
-        parabolaMethod(func3, 0, 2 * Math.PI, 0.1);
-        System.out.println();
-        System.out.println("Fourth function results:");
-        parabolaMethod(func4, 0, 1, 0.1);
-        System.out.println();
-        System.out.println("Fifth function results:");
-        parabolaMethod(func5, 0.5, 2.5, 0.1);
+        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.1f);
+        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.05f);
+        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.03f);
+        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.01f);
+        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.001f);
+        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.0005f);
+        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.00005f);
+        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.000001f);
+        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.0000001f);
+        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.00000001f);
+        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.000000001f);
+        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.0000000001f);
+//        System.out.println("First function results:");
+//        parabolaMethod(func1, -0.5, 0.5,  0.1);
+//        System.out.println();
+//        System.out.println("Second function results:");
+//        parabolaMethod(func2, 6,9.9, 0.1);
+//        System.out.println();
+//        System.out.println("Third function results:");
+//        parabolaMethod(func3, 0, 2 * Math.PI, 0.1);
+//        System.out.println();
+//        System.out.println("Fourth function results:");
+//        parabolaMethod(func4, 0, 1, 0.1);
+//        System.out.println();
+//        System.out.println("Fifth function results:");
+//        parabolaMethod(func5, 0.5, 2.5, 0.1);
     }
 }
