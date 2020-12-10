@@ -17,9 +17,8 @@ public class ParabolaMethod {
         int iter = 0;
         double f1 = f.execute(a);
         double f3 = f.execute(b);
-        double x2 = (a + b) / 5;
+        double x2 = (a + b) / 2.5;
         double f2 = f.execute(x2);
-        //double x2 = (a + b) / 2;
 
         while (b - a > eps)
         {
