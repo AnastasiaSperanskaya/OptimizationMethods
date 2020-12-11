@@ -65,19 +65,47 @@ public class GoldenSectionMethod {
         Function func3 = Functions.action(3);
         Function func4 = Functions.action(4);
         Function func5 = Functions.action(5);
+        Function f_cos = Functions.action(6);
+        Function f_pol5 = Functions.action(7);
 
-        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.1f);
-        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.05f);
-        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.03f);
-        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.01f);
-        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.001f);
-        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.0005f);
-        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.00005f);
-        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.000001f);
-        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.0000001f);
-        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.00000001f);
-        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.000000001f);
-        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.0000000001f);
+        //unimodal function (cosine) investigation on three intervals
+        System.out.println("Cosine function results on interval [-10;10]:");
+        goldenSectionMethod(f_cos, -10, 10, 0.1f);
+        System.out.println();
+        System.out.println("Cosine function results on interval [-7;4]:");
+        goldenSectionMethod(f_cos, -7, 4, 0.1f);
+        System.out.println();
+        System.out.println("Cosine function resultson interval [-5;3]:");
+        goldenSectionMethod(f_cos, -5, 3, 0.1f);
+        System.out.println();
+
+        //unimodal function (polinom 5th power) investigation on three intervals
+//        System.out.println("Polinom function results on interval [-1;3]:");
+//        goldenSectionMethod(f_pol5, -1, 3, 0.1f);
+//        System.out.println();
+//        System.out.println("Polinom function results on interval [-0.8;1]:");
+//        goldenSectionMethod(f_pol5, -0.8f, 1, 0.1f);
+//        System.out.println();
+//        System.out.println("Polinom function resultson interval [-2;4]:");
+//        goldenSectionMethod(f_pol5, -2, 4, 0.1f);
+//        System.out.println();
+//        System.out.println("Polinom function resultson interval [-10;10]:");
+//        goldenSectionMethod(f_pol5, -10, 10, 0.1f);
+//        System.out.println();
+
+//        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.1f);
+//        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.05f);
+//        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.03f);
+//        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.01f);
+//        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.001f);
+//        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.0005f);
+//        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.00005f);
+//        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.000001f);
+//        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.0000001f);
+//        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.00000001f);
+//        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.000000001f);
+//        goldenSectionMethodPart2(func1, -0.5f, 0.5f, 0.0000000001f);
+
 //        System.out.println("First function results:");
 //        goldenSectionMethod(func1, -0.5f, 0.5f, 0.1f);
 //        System.out.println();

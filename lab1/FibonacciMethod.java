@@ -16,7 +16,7 @@ public class FibonacciMethod {
 
     public static void fibonacciMethod(Function f, float a, float b, float eps) {
         NumberFormat nf2 = NumberFormat.getInstance(new Locale("sk", "SK"));
-        nf2.setMaximumFractionDigits(4);
+        nf2.setMaximumFractionDigits(10);
         int n = 2;
         long x = 1;
         long y = 1;
@@ -45,7 +45,7 @@ public class FibonacciMethod {
             System.out.println("Calculated function values are: " + nf2.format(f1) + " , " + nf2.format(f2));
         }
         System.out.println("interval with minimum: [" + a + " ; " + b + "]");
-        System.out.println("x = " + x1+ " f(x) = " + f.execute(x1));
+        System.out.println("x = " + nf2.format(x1)+ " f(x) = " + nf2.format(f.execute(x1)));
         System.out.println("Iterations made: " + n);
     }
 
@@ -80,16 +80,42 @@ public class FibonacciMethod {
         Function func3 = Functions.action(3);
         Function func4 = Functions.action(4);
         Function func5 = Functions.action(5);
+        Function f_cos = Functions.action(6);
+        Function f_pol5 = Functions.action(7);
 
-        fibonacciMethodPart2(func1, -0.5f, 0.5f, 0.1f);
-        fibonacciMethodPart2(func1, -0.5f, 0.5f, 0.05f);
-        fibonacciMethodPart2(func1, -0.5f, 0.5f, 0.03f);
-        fibonacciMethodPart2(func1, -0.5f, 0.5f, 0.01f);
-        fibonacciMethodPart2(func1, -0.5f, 0.5f, 0.001f);
-        fibonacciMethodPart2(func1, -0.5f, 0.5f, 0.0005f);
-        fibonacciMethodPart2(func1, -0.5f, 0.5f, 0.00005f);
-        fibonacciMethodPart2(func1, -0.5f, 0.5f, 0.000001f);
-        fibonacciMethodPart2(func1, -0.5f, 0.5f, 0.0000001f);
+        //unimodal function (cosine) investigation on three intervals
+//        System.out.println("Cosine function results on interval [-10;10]:");
+//        fibonacciMethod(f_cos, -10, 10, 0.1f);
+//        System.out.println();
+//        System.out.println("Cosine function results on interval [-7;4]:");
+//        fibonacciMethod(f_cos, -7, 4, 0.1f);
+//        System.out.println();
+//        System.out.println("Cosine function resultson interval [-5;3]:");
+//        fibonacciMethod(f_cos, -5, 3, 0.1f);
+
+        //unimodal function (polinom 5th power) investigation on three intervals
+        System.out.println("Polinom function results on interval [-1;3]:");
+        fibonacciMethod(f_pol5, -1, 3, 0.1f);
+        System.out.println();
+        System.out.println("Polinom function results on interval [-0.8;1]:");
+        fibonacciMethod(f_pol5, -0.8f, 1, 0.1f);
+        System.out.println();
+        System.out.println("Polinom function resultson interval [-2;4]:");
+        fibonacciMethod(f_pol5, -2, 4, 0.1f);
+        System.out.println();
+        System.out.println("Polinom function resultson interval [-10;10]:");
+        fibonacciMethod(f_pol5, -10, 10, 0.1f);
+
+//        fibonacciMethodPart2(func1, -0.5f, 0.5f, 0.1f);
+//        fibonacciMethodPart2(func1, -0.5f, 0.5f, 0.05f);
+//        fibonacciMethodPart2(func1, -0.5f, 0.5f, 0.03f);
+//        fibonacciMethodPart2(func1, -0.5f, 0.5f, 0.01f);
+//        fibonacciMethodPart2(func1, -0.5f, 0.5f, 0.001f);
+//        fibonacciMethodPart2(func1, -0.5f, 0.5f, 0.0005f);
+//        fibonacciMethodPart2(func1, -0.5f, 0.5f, 0.00005f);
+//        fibonacciMethodPart2(func1, -0.5f, 0.5f, 0.000001f);
+//        fibonacciMethodPart2(func1, -0.5f, 0.5f, 0.0000001f);
+
 //        System.out.println("First function results:");
 //        fibonacciMethod(func1, -0.5f, 0.5f, 0.1f);
 //        System.out.println();

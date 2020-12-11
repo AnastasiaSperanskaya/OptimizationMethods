@@ -137,7 +137,7 @@ public class BrentsMethod {
             }
         }
         System.out.println("interval with minimum: [" + a + " ; " + b + "]");
-        System.out.println("x = " + x0 + " f(x) = " + f.execute(x0));
+        System.out.println("x = " + nf2.format(x0) + " f(x) = " + nf2.format(f.execute(x0)));
     }
 
     public static void brentsMethodPart2(Function f, double a, double b, double eps)
@@ -269,19 +269,46 @@ public class BrentsMethod {
         Function func3 = Functions.action(3);
         Function func4 = Functions.action(4);
         Function func5 = Functions.action(5);
+        Function f_cos = Functions.action(6);
+        Function f_pol5 = Functions.action(7);
 
-        brentsMethodPart2(func1, -0.5f, 0.5f, 0.1f);
-        brentsMethodPart2(func1, -0.5f, 0.5f, 0.05f);
-        brentsMethodPart2(func1, -0.5f, 0.5f, 0.03f);
-        brentsMethodPart2(func1, -0.5f, 0.5f, 0.01f);
-        brentsMethodPart2(func1, -0.5f, 0.5f, 0.001f);
-        brentsMethodPart2(func1, -0.5f, 0.5f, 0.0005f);
-        brentsMethodPart2(func1, -0.5f, 0.5f, 0.00005f);
-        brentsMethodPart2(func1, -0.5f, 0.5f, 0.000001f);
-        brentsMethodPart2(func1, -0.5f, 0.5f, 0.0000001f);
-        brentsMethodPart2(func1, -0.5f, 0.5f, 0.00000001f);
-        brentsMethodPart2(func1, -0.5f, 0.5f, 0.000000001f);
-        brentsMethodPart2(func1, -0.5f, 0.5f, 0.0000000001f);
+        //unimodal function (cosine) investigation on three intervals
+        System.out.println("Cosine function results on interval [-10;10]:");
+        brentsMethod(f_cos, -10, 10, 0.1f);
+        System.out.println();
+        System.out.println("Cosine function results on interval [-7;4]:");
+        brentsMethod(f_cos, -7, 4, 0.1f);
+        System.out.println();
+        System.out.println("Cosine function resultson interval [-5;3]:");
+        brentsMethod(f_cos, -5, 3, 0.1f);
+        System.out.println();
+
+        //unimodal function (polinom 5th power) investigation on three intervals
+        System.out.println("Polinom function results on interval [-1;3]:");
+        brentsMethod(f_pol5, -1, 3, 0.1f);
+        System.out.println();
+        System.out.println("Polinom function results on interval [-0.8;1]:");
+        brentsMethod(f_pol5, -0.8f, 1, 0.1f);
+        System.out.println();
+        System.out.println("Polinom function resultson interval [-2;4]:");
+        brentsMethod(f_pol5, -2, 4, 0.1f);
+        System.out.println();
+        System.out.println("Polinom function resultson interval [-10;10]:");
+        brentsMethod(f_pol5, -10, 10, 0.1f);
+
+//        brentsMethodPart2(func1, -0.5f, 0.5f, 0.1f);
+//        brentsMethodPart2(func1, -0.5f, 0.5f, 0.05f);
+//        brentsMethodPart2(func1, -0.5f, 0.5f, 0.03f);
+//        brentsMethodPart2(func1, -0.5f, 0.5f, 0.01f);
+//        brentsMethodPart2(func1, -0.5f, 0.5f, 0.001f);
+//        brentsMethodPart2(func1, -0.5f, 0.5f, 0.0005f);
+//        brentsMethodPart2(func1, -0.5f, 0.5f, 0.00005f);
+//        brentsMethodPart2(func1, -0.5f, 0.5f, 0.000001f);
+//        brentsMethodPart2(func1, -0.5f, 0.5f, 0.0000001f);
+//        brentsMethodPart2(func1, -0.5f, 0.5f, 0.00000001f);
+//        brentsMethodPart2(func1, -0.5f, 0.5f, 0.000000001f);
+//        brentsMethodPart2(func1, -0.5f, 0.5f, 0.0000000001f);
+
 //        System.out.println("First function results:");
 //        brentsMethod(func1, -0.5, 0.5,  0.1);
 //        System.out.println();

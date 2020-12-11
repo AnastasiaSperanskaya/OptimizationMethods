@@ -15,6 +15,8 @@ public class Functions {
             case 3: return (x) -> (-3) * x * Math.sin(0.75 * x) + Math.exp(1) - 2 * x;
             case 4: return (x) -> Math.exp(3 * x) + 5 * Math.exp(1) - 2 * x;
             case 5: return (x) -> 0.2 * x * Math.log10(x) + Math.pow(x - 2.3, 2);
+            case 6: return (x) -> Math.cos(x);
+            case 7: return (x) -> Math.pow(x, 5) - 5 * Math.pow(x, 4) + 5 * Math.pow(x, 3) + 4 * Math.pow(x, 2) -  4 * x - 1;
             default: return (x) -> Math.cos(x) - Math.sqrt(x);
         }
     }

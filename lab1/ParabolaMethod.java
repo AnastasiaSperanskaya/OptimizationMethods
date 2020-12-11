@@ -30,8 +30,6 @@ public class ParabolaMethod {
 
             System.out.println("Calculated point: " + nf2.format(u));
             System.out.println("Calculated function value: " + nf2.format(fu));
-//            System.out.println("x2: " + nf2.format(x2));
-//            System.out.println("u: " + nf2.format(u));
 
             if (u > a && u < b) {
                 if (fu < f2) {
@@ -140,19 +138,46 @@ public class ParabolaMethod {
         Function func3 = Functions.action(3);
         Function func4 = Functions.action(4);
         Function func5 = Functions.action(5);
+        Function f_cos = Functions.action(6);
+        Function f_pol5 = Functions.action(7);
 
-        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.1f);
-        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.05f);
-        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.03f);
-        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.01f);
-        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.001f);
-        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.0005f);
-        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.00005f);
-        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.000001f);
-        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.0000001f);
-        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.00000001f);
-        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.000000001f);
-        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.0000000001f);
+        //unimodal function (cosine) investigation on three intervals
+        System.out.println("Cosine function results on interval [-10;10]:");
+        parabolaMethod(f_cos, -10, 10, 0.1f);
+        System.out.println();
+        System.out.println("Cosine function results on interval [-7;4]:");
+        parabolaMethod(f_cos, -7, 4, 0.1f);
+        System.out.println();
+        System.out.println("Cosine function resultson interval [-5;3]:");
+        parabolaMethod(f_cos, -5, 3, 0.1f);
+        System.out.println();
+
+        //unimodal function (polinom 5th power) investigation on three intervals
+        System.out.println("Polinom function results on interval [-1;3]:");
+        parabolaMethod(f_pol5, -1, 3, 0.1f);
+        System.out.println();
+        System.out.println("Polinom function results on interval [-0.8;1]:");
+        parabolaMethod(f_pol5, -0.8f, 1, 0.1f);
+        System.out.println();
+        System.out.println("Polinom function resultson interval [-2;4]:");
+        parabolaMethod(f_pol5, -2, 4, 0.1f);
+        System.out.println();
+        System.out.println("Polinom function resultson interval [-10;10]:");
+        parabolaMethod(f_pol5, -10, 10, 0.1f);
+
+//        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.1f);
+//        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.05f);
+//        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.03f);
+//        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.01f);
+//        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.001f);
+//        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.0005f);
+//        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.00005f);
+//        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.000001f);
+//        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.0000001f);
+//        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.00000001f);
+//        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.000000001f);
+//        parabolaMethodPart2(func1, -0.5f, 0.5f, 0.0000000001f);
+
 //        System.out.println("First function results:");
 //        parabolaMethod(func1, -0.5, 0.5,  0.1);
 //        System.out.println();

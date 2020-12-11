@@ -52,19 +52,49 @@ public class DichotomyMethod {
         Function func3 = Functions.action(3);
         Function func4 = Functions.action(4);
         Function func5 = Functions.action(5);
+        Function f_cos = Functions.action(6);
+        Function f_pol5 = Functions.action(7);
 
-        dichotomyMethodPart2(func1, -0.5f, 0.5f, 0.1f);
-        dichotomyMethodPart2(func1, -0.5f, 0.5f, 0.05f);
-        dichotomyMethodPart2(func1, -0.5f, 0.5f, 0.03f);
-        dichotomyMethodPart2(func1, -0.5f, 0.5f, 0.01f);
-        dichotomyMethodPart2(func1, -0.5f, 0.5f, 0.001f);
-        dichotomyMethodPart2(func1, -0.5f, 0.5f, 0.0005f);
-        dichotomyMethodPart2(func1, -0.5f, 0.5f, 0.00005f);
-        dichotomyMethodPart2(func1, -0.5f, 0.5f, 0.000001f);
-        dichotomyMethodPart2(func1, -0.5f, 0.5f, 0.0000001f);
-        dichotomyMethodPart2(func1, -0.5f, 0.5f, 0.00000001f);
-        dichotomyMethodPart2(func1, -0.5f, 0.5f, 0.000000001f);
-        dichotomyMethodPart2(func1, -0.5f, 0.5f, 0.0000000001f);
+        //unimodal function (cosine) investigation on three intervals
+//        System.out.println("Cosine function results on interval [-10;10]:");
+//        dichotomyMethod(f_cos, -10, 10, 0.1f);
+//        System.out.println();
+//        System.out.println("Cosine function results on interval [-7;4]:");
+//        dichotomyMethod(f_cos, -7, 4, 0.1f);
+//        System.out.println();
+//        System.out.println("Cosine function resultson interval [-5;3]:");
+//        dichotomyMethod(f_cos, -5, 3, 0.1f);
+//        System.out.println();
+
+        //unimodal function (polinom 5th power) investigation on three intervals
+        System.out.println("Polinom function results on interval [-1;3]:");
+        dichotomyMethod(f_pol5, -1, 3, 0.1f);
+        System.out.println();
+        System.out.println("Polinom function results on interval [-0.8;1]:");
+        dichotomyMethod(f_pol5, -0.8f, 1, 0.1f);
+        System.out.println();
+        System.out.println("Polinom function resultson interval [-2;4]:");
+        dichotomyMethod(f_pol5, -2, 4, 0.1f);
+        System.out.println();
+        System.out.println("Polinom function resultson interval [-10;10]:");
+        dichotomyMethod(f_pol5, -10, 10, 0.1f);
+        System.out.println();
+
+        //outputting results of function calls with different accuracy
+//        dichotomyMethodPart2(func1, -0.5f, 0.5f, 0.1f);
+//        dichotomyMethodPart2(func1, -0.5f, 0.5f, 0.05f);
+//        dichotomyMethodPart2(func1, -0.5f, 0.5f, 0.03f);
+//        dichotomyMethodPart2(func1, -0.5f, 0.5f, 0.01f);
+//        dichotomyMethodPart2(func1, -0.5f, 0.5f, 0.001f);
+//        dichotomyMethodPart2(func1, -0.5f, 0.5f, 0.0005f);
+//        dichotomyMethodPart2(func1, -0.5f, 0.5f, 0.00005f);
+//        dichotomyMethodPart2(func1, -0.5f, 0.5f, 0.000001f);
+//        dichotomyMethodPart2(func1, -0.5f, 0.5f, 0.0000001f);
+//        dichotomyMethodPart2(func1, -0.5f, 0.5f, 0.00000001f);
+//        dichotomyMethodPart2(func1, -0.5f, 0.5f, 0.000000001f);
+//        dichotomyMethodPart2(func1, -0.5f, 0.5f, 0.0000000001f);
+
+        //first task - 5 different unimodal functions investigation
 //        System.out.println("First function results:");
 //        dichotomyMethod(func1, -0.5f, 0.5f, 0.1f);
 //        System.out.println();
