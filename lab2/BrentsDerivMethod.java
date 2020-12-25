@@ -1,4 +1,4 @@
-package lab2.task;
+package lab2;
 
 public class BrentsDerivMethod {
 }
